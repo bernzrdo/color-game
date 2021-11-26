@@ -1,0 +1,159 @@
+
+body {
+    margin: 0;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.5em;
+}
+
+.off {
+    pointer-events: none;
+}
+
+/* --- DARK MODE --- */
+
+@media (prefers-color-scheme: dark) {
+
+    body {
+        background-color: #000;
+        color: #eee;
+    }
+
+    .start .start-btn,
+    .bottom .answers div,
+    .time .elapsed {
+        background-color: #333 !important;
+    }
+
+    .time {
+        background-color: #111 !important;
+    }
+
+    .start .score {
+        color: #aaa !important;
+    }
+
+}
+
+/* --- START --- */
+
+.start {
+    display: flex;
+    flex-direction: column;
+    gap: 10px 0;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    transition: transform .5s, opacity .5s;
+}
+.start.off {
+    transform: translateY(-50%) scale(.75);
+    opacity: 0;
+}
+
+.start .logo {
+    font-size: 2em;
+}
+
+.start .score {
+    color: #333;
+    font-size: .75em;
+    text-align: center;
+}
+
+.start .start-btn {
+    display: inline-block;
+    background-color: #eee;
+    width: 200px;
+    padding: 5px;
+    border-radius: 5000px;
+    text-align: center;
+    cursor: pointer;
+}
+
+/* --- TIME --- */
+
+.time {
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 30px);
+    max-width: 500px;
+    height: 5px;
+    background-color: #eee;
+    border-radius: 5000px;
+    transition: transform .5s, height .5s;
+}
+.game.off .time {
+    transform: translate(-50%, calc(-100% - 15px));
+    height: 0;
+}
+
+.time .elapsed {
+    height: 100%;
+    background-color: #ccc;
+    border-radius: 5000px;
+}
+
+/* --- COLOR --- */
+
+.color {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    text-align: center;
+    font-size: 2em;
+    transition: transform .5s, opacity .5s;
+}
+.game.off .color {
+    transform: translateY(-50%) scale(.75);
+    opacity: 0;
+}
+.color.red    {color: #f00}
+.color.orange {color: #f80}
+.color.yellow {color: #ff0}
+.color.green  {color: #0f0}
+.color.blue   {color: #08f}
+.color.purple {color: #80f}
+.color.pink   {color: #f8f}
+.color.white  {color: #fff}
+.color.black  {color: #000}
+
+/* --- BOTTOM --- */
+
+.bottom {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    width: calc(100% - 30px);
+    max-width: 500px;
+    height: calc(2em + 55px);
+    overflow: hidden;
+    transition: transform .5s, height .5s;
+}
+.game.off .bottom {
+    transform: translate(-50%, calc(100% + 30px));
+    height: 0;
+}
+
+.bottom .question {
+    margin-bottom: 15px;
+}
+
+.bottom .answers {
+    display: flex;
+    gap: 0 15px;
+}
+
+.bottom .answers div {
+    width: 100%;
+    background-color: #eee;
+    padding: 5px;
+    border-radius: 5000px;
+    cursor: pointer;
+}
